@@ -1,0 +1,40 @@
+1) LRU Cache
+
+I have used a combination of doubly-linked list and hash map(in the form of a dictionary) to implement the LRU cache. 
+The dictionary is used to achieve constant time put and set operations while the doubly-linked list is used to
+keep track of the most recently and least recently used elements in the data structure. This also lets us perform 
+insert and delete nodes in constant time with the help of the dictionary which references nodes in constant time.
+
+The time complexity of my solution is O(1); Constant time
+
+2) File Recursion
+
+I have used recursive calls to the function "find_files" which prints files with the given extension if it exists in the 
+directory. Each directory within a parent directory is recursively called with the "find_files" function thereby displaying
+all files with that extension within the parent directory.
+
+The time complexity of this solution is O(n); Linear time; The recursive function call calls as many times as the number of 
+directories within the parent directory, making this linear time complexity
+
+3) Huffman Coding
+
+
+4) Active Directory
+
+I have used recursive calls on groups within a group to check if user is present. The worst case time complexity (when the user isn't present in the group) will be O(n) since the recursive call calls the number of times as the number of groups.
+
+The time complexity of this solution is O(n); Linear time;
+
+5) Blockchain
+
+The hash value is calculated for the block as a function of timestamp, data and previous hash value. Each block has the previous hash block's hash value stored in it and also the link to the next block. A linked list is implemented to store these blocks with a head and a tail. A tail is used to store the last node value which avoids having to traverse the entire blockchain every time a new node is to be added. The adding of blocks to the blockchain happens in constant time thanks to linked list data structure. I have written an additional get_blockchain function that prints the entire blockchain, this however has O(n) linear time complexity.
+
+The time complexity of the addition of blocks to blockchain is O(n); Linear time
+
+6) Union & Intersection
+
+For Union, I have created a list to store all the unique elements of list 1 and then added all the elements from list 2 that aren't in list 1 to form an array list of union of the two linked lists. This list is converted into a linked list.
+
+For Intersection, I have created an array list to which elements are added only if the elements are present in both the linked lists.
+
+The time complexity for both Union and Intersection is O(n); Linear time. There are three loops for each case whose time complexity is linear. 
