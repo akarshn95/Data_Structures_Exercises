@@ -6,6 +6,7 @@ keep track of the most recently and least recently used elements in the data str
 insert and delete nodes in constant time with the help of the dictionary which references nodes in constant time.
 
 The time complexity of my solution is O(1); Constant time
+Space Complexity : O(n); Linear space because I've used dictionary with Doubly-linked nodes stored in dictionary. 
 
 2) File Recursion
 
@@ -13,12 +14,15 @@ I have used recursive calls to the function "find_files" which prints files with
 directory. Each directory within a parent directory is recursively called with the "find_files" function thereby displaying
 all files with that extension within the parent directory.
 
-The time complexity of this solution is O(n); Linear time; The recursive function call calls as many times as the number of 
-directories within the parent directory, making this linear time complexity
+The time complexity of this solution is O(kn) where n is the number of directories within the root directory and k is the number of files per directory; 
+Linear time; The recursive function call calls 
+as many times as the number of directories within the parent directory, making this linear time complexity
+Space complexity is O(1); Consant space, only the path is stored, the files are printed out
 
 3) Huffman Coding
 
-The Huffman algorithm works by assigning codes that correspond to the relative frequency of each character for each character. The Huffman code can be of any length and does not require a prefix; therefore, this binary code can be visualized on a binary tree with each encoded character being stored in the leaves.
+The Huffman algorithm works by assigning codes that correspond to the relative frequency of each character for each character. 
+The Huffman code can be of any length and does not require a prefix; therefore, this binary code can be visualized on a binary tree with each encoded character being stored in the leaves.
 
 I have used the classic approach to solving the Huffman Coding problem by researching from sources like GeeksForGeeks and Programiz. I have used a priority queue using Python’s heapq module to build the Huffman Tree. The time complexity of the Huffman algorithm is O(nlogn). By using a heap to store the weight of each tree, each iteration requires O(log n) time to place in the priority queue, and there are O(n) iterations, one for each item. 
 
@@ -26,18 +30,24 @@ I have used the classic approach to solving the Huffman Coding problem by resear
 
 I have used recursive calls on groups within a group to check if user is present. The worst case time complexity (when the user isn't present in the group) will be O(n) since the recursive call calls the number of times as the number of groups.
 
-The time complexity of this solution is O(n); Linear time;
+The time complexity of this solution is O(n) where n is the number of groups/users in the root; Linear time; 
+Space complexity: O(n); we store all the groups, so as the n (number of groups in the root) increases, the space increases linearly 
 
 5) Blockchain
 
 The hash value is calculated for the block as a function of timestamp, data and previous hash value. Each block has the previous hash block's hash value stored in it and also the link to the next block. A linked list is implemented to store these blocks with a head and a tail. A tail is used to store the last node value which avoids having to traverse the entire blockchain every time a new node is to be added. The adding of blocks to the blockchain happens in constant time thanks to linked list data structure. I have written an additional get_blockchain function that prints the entire blockchain, this however has O(n) linear time complexity.
 
-The time complexity of the addition of blocks to blockchain is O(n); Linear time
+The time complexity of the addition of blocks to blockchain is O(1); Additon of new blocks take constant time thanks to linked list implementation
+Space Complexity : O(n), as the number of blocks (n) increases, the space required to store the blockchain also increases
 
 6) Union & Intersection
 
-For Union, I have created a list to store all the unique elements of list 1 and then added all the elements from list 2 that aren't in list 1 to form an array list of union of the two linked lists. This list is converted into a linked list.
+For Union, I have used sets to create a list of unique elements in the two linked lists and appended the together.
+Time Complexity : O(n) I have used loops to iterate over the list elements and also to build the final linked list
+Space Complexity : O(n); A set and linked list is used for this function, so the space complexity is O(2n)
 
-For Intersection, I have created an array list to which elements are added only if the elements are present in both the linked lists.
+For Intersection, I have used dictionaries to keep track of the elements and have added only those elements in both the linked lists
+Time Complexity : O(n) I have used loops to iterate over the list elements and also to build the final linked list; the lookup time for a dictionary is O(1), so the time complexity stays at O(n)
+Space Complexity : O(n); A dictionary and linked list is used for this function, so the space complexity is O(2n)
 
 The time complexity for both Union and Intersection is O(n); Linear time. There are three loops for each case whose time complexity is linear. 
