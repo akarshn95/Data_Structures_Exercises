@@ -1,3 +1,9 @@
+"""
+References :
+- GeeksForGeeks
+- Programiz
+"""
+
 import sys
 import heapq
     
@@ -12,30 +18,26 @@ class Huff_Node:
     def __lt__(self, other):
         return self.wt < other.wt
     
-    def __str__(self):
-        return str(self.value)+" "+str(self.wt)
-    
-    
 def get_frequecies(data):
     freq = {}
     
     for item in data:
         if item not in freq:
             freq[item] = 1
-        else:
-            freq[item] +=1
-
+        freq[item] +=1
+    # make the dictionary into an list array which is sorted on values
     freq_sorted = sorted(zip(freq.values(), freq.keys()))
 
     for i in range(len(freq_sorted)):
-        value = freq_sorted[i][1] #second item is value
-        freq = freq_sorted[i][0] #first item is frequency
-
-        freq_sorted[i] = Huff_Node(value, freq)
+        value = freq_sorted[i][1] # value
+        freq = freq_sorted[i][0] # frequency
+        # converting to an array of nodes which have the value and frequency of the characters
+        freq_sorted[i] = Huff_Node(value, freq)  
 
     return freq_sorted  
 
 def huffman_tree(data):
+    # building a Huffman tree
     heap = get_frequecies(data) 
     heapq.heapify(heap) 
     while len(heap) != 1:
@@ -44,15 +46,14 @@ def huffman_tree(data):
         h_node.left  = left
         right = heapq.heappop(heap)
         h_node.right  = right
-        h_node.wt = left.wt + right.wt
+        h_node.wt = left.wt + right.wt     # popped the first two nodes of least value and added a node whose weight is sum of the two popped nodes
         heapq.heappush(heap, h_node)
     return heap
 
-
+# Referred from Tutorials Point Huffman algorithm section
 def create_Huffcode_table(root):
     code = {}
     # a left edge represents a 0 bit, a right edge represents a 1 bit
-    #traverse the Huff Tree to build the code table
     def getCode(hNode, currentCode=""):
         if (hNode == None): 
             return
@@ -100,7 +101,6 @@ def huffman_encoding(data):
 
 def huffman_decoding(data,tree):
     return huffman_decode(data,tree)
-
 
 
 
