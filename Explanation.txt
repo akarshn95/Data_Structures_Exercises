@@ -18,6 +18,9 @@ directories within the parent directory, making this linear time complexity
 
 3) Huffman Coding
 
+The Huffman algorithm works by assigning codes that correspond to the relative frequency of each character for each character. The Huffman code can be of any length and does not require a prefix; therefore, this binary code can be visualized on a binary tree with each encoded character being stored in the leaves.
+
+I have used the classic approach to solving the Huffman Coding problem by researching from sources like GeeksForGeeks and Programiz. I have used a priority queue using Python’s heapq module to build the Huffman Tree. The time complexity of the Huffman algorithm is O(nlogn). By using a heap to store the weight of each tree, each iteration requires O(log n) time to place in the priority queue, and there are O(n) iterations, one for each item. 
 
 4) Active Directory
 
