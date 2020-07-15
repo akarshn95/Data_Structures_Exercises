@@ -42,19 +42,17 @@ class LinkedList:
         return size
 
 def union(llist_1, llist_2):
-    elements=[]
+    elements=set()
     linkList=LinkedList()
     
     node=llist_1.head
     while node:
-        if node.value not in elements:
-            elements.append(node.value)
+        elements.add(node.value)
         node=node.next
         
     node=llist_2.head
     while node:
-        if node.value not in elements:
-            elements.append(node.value)
+        elements.add(node.value)
         node=node.next
     
     for i in elements:
@@ -64,31 +62,23 @@ def union(llist_1, llist_2):
     
 def intersection(llist_1, llist_2):
     linkList=LinkedList()
-    elements_1=[]
-    elements_2=[]
-    
+    elements_1=dict()
+    elements_2=dict()
+
     node=llist_1.head
     while node:
-        if node.value not in elements_1:
-            elements_1.append(node.value)
+        elements_1[node.value]=elements_1.get(node.value,0)+1
         node=node.next
         
     node=llist_2.head
     while node:
-        if node.value not in elements_2:
-            elements_2.append(node.value)
+        elements_2[node.value]=elements_2.get(node.value,0)+1
         node=node.next
     
-    common=[]
-    for i in elements_1:
-        if i in elements_2:
-            common.append(i)
-    
-    if len(common)==0:
-        return "No Intersection"
-    for i in common:
-        linkList.append(i)
-    
+    for key in elements_1:
+        if key in elements_2:
+            linkList.append(key)
+
     return linkList
 
 # TEST CASES
